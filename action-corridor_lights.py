@@ -1,4 +1,4 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python3
 from hermes_python.hermes import Hermes
 
 MQTT_ADDR= "192.168.1.132:1883"
