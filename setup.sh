@@ -32,6 +32,6 @@ then
 else
     >&2 echo "Cannpt find Python 3. Please install it."
 fi
-fi
+
 
 
