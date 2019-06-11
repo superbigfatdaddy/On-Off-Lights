@@ -1,10 +1,10 @@
 #!/usr/bin/env bash -e
-
+"""
 if [ ! -e config.ini ]
 then
     cp config.ini.default config.ini
 fi
-
+"""
 PYTHON=`which python3`
 VENV=venv
 
