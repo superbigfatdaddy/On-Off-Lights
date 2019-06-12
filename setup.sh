@@ -1,9 +1,9 @@
 #!/usr/bin/env bash -e
 ##Create config.ini file
-#if [ ! -e config.ini ]
-#then
-#    cp config.ini.default config.ini
-#fi
+if [ ! -e config.ini ]
+then
+    cp config.ini.default config.ini
+fi
 
 
 PYTHON=`which python3`
