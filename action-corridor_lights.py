@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import configparser
+import ConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ffi.utils import MqttOptions
 from hermes_python.ontology import *
@@ -10,7 +10,7 @@ import io
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI ="config.ini"
 
-class SnipsConfigParser(configparser.SafeConfigParser):
+class SnipsConfigParser(ConfigParser.SafeConfigParser):
     def to_dict(self):
         return {section : {option_name : option for option_name, option in self.items(section)} for section in self.sections()}
 
@@ -20,7 +20,7 @@ def read_configuration_file(configuration_file):
             conf_parser = SnipsConfigParser()
             conf_parser.readfp(f)
             return conf_parser.to_dict()
-    except (IOError, configparser.Error) as e:
+    except (IOError, ConfigParser.Error) as e:
         return dict()
 
 def subcribe_intent_callback(hermes, intentMessage):
@@ -34,6 +34,6 @@ def action_wrapper(hermes, intentMessage, conf):
 
 if __name__ =="__main__":
     mqtt_opts = MqttOptions()
-    with Hermes(mqtt_options=mqtt_opts) as h:
+    with Hermes("localhost:1883") as h:
         h.subscribe_intent("{{intent_id}}", subscribe_intent_callback).start()
 
